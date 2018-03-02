@@ -7,7 +7,7 @@ void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	AActor *PlayerTank = GetPlayerTank();
+	PlayerTank = GetPlayerTank();
 	if (!PlayerTank)
 	{
 
@@ -16,6 +16,20 @@ void ATankAIController::BeginPlay()
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("AIController : %s is the player tank"), *(PlayerTank->GetName()));
+	}
+}
+
+void ATankAIController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	if (PlayerTank)
+	{
+		// TODO Move toward the player
+
+		// Aim toward the player
+		GetControlledTank()->AimAt(PlayerTank->GetActorLocation());
+
+		// Fire is ready
 	}
 }
 

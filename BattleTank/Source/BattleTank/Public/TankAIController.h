@@ -19,7 +19,10 @@ private:
 	ATank *GetControlledTank() const;
 	
 	void BeginPlay() override;
+	void Tick(float DeltaTime) override;
 
 	APawn *GetPlayerTank() const;
+
+	AActor *PlayerTank;
 	
 };
